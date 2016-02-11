@@ -1,0 +1,56 @@
+# Host fencing addresses configuration file
+
+# fence_multissh will attempt to ssh into each of the 'ip' addresses 
+# specified and perform a host shutdown or issue a wake on LAN call 
+# to each.
+# Optional 'key' is the path to the ssh private key to use to access 
+# the host, if there is no per host key specified, the system will 
+# use $HOME/.ssh/id_rsa
+# Optional 'script' is the path to a script to run besides trying various 
+# ssh IPs, this can be another fencing script with params or anything 
+# else.
+
+
+#Example:
+#- host: string
+#    hostname: 
+#      fqdn.example.com
+#      fqdn.from-another.net
+#    ip:
+#      1.2.3.4
+#      4.3.2.1
+#      ...
+#    key: /path/to/ssh.key            #optional
+#    script: /path/to/script to run   #optional
+#    rootpass: 'password'             #optional
+#    sshport: 2222                    #optional
+
+
+---
+- defaults:
+    key: /etc/fence_multissh/privkey
+
+- host: 
+    hostname: 
+      hv09.maxbetgroup.com
+    ip: 
+      192.168.10.9
+      192.168.20.9
+      10.1.0.97
+
+- host: 
+    hostname: 
+      hv10.maxbetgroup.com
+    ip: 
+      192.168.10.10
+      192.168.20.10
+      10.1.0.96
+
+
+- host: 
+    hostname: 
+      hv11.maxbetgroup.com
+    ip: 
+      192.168.10.11
+      192.168.20.11
+      10.1.0.95
